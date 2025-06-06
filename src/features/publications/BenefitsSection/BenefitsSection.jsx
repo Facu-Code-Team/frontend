@@ -33,7 +33,7 @@ const BenefitsSection = () => {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-[#40250D] mb-4">Por qué elegirnos</h2>
           <p className="text-lg text-[#60250D] max-w-2xl mx-auto">
-            Beneficios exclusivos para músicos como tú
+            Beneficios exclusivos para músicos como vos
           </p>
         </div>
 
