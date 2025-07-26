@@ -15,7 +15,6 @@ const initialState = {
     subCategoryId: "",
     description: "",
     image: "",
-    cityId: ""
 };
 
 const PublicationFormSeller = ({ onRefresh }) => {
