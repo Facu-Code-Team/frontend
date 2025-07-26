@@ -185,10 +185,10 @@ function RegisterValidations(onRegisterSuccess) {
         Passwords: '',
         confirmPassword: '',
       });
-      notifySuccessAdd(`¡Registro con éxito!`)
 
       if (!isAuthenticated) {
         navigate('/login');
+        notifySuccessAdd(`¡Registro con éxito!`)
       }
 
     } catch (error) {
@@ -199,8 +199,8 @@ function RegisterValidations(onRegisterSuccess) {
           ...prev,
           Email: error.message,
         }));
-      } else {
         notifyMissingFields(`¡Hubo un error al registrarte!`);
+      } else {
       }
     }
   };
