@@ -4,6 +4,7 @@ import MyPosts from '../../features/sellerFeatures/myPosts/MyPosts';
 import { useNavigate } from 'react-router'
 import { useEffect, useState } from 'react';
 import { useAuth } from '../../services/auth/AuthContext';
+import { API_URL } from "../../../../frontend/src/config";
 
 
 const SellerDashboard = ({ onRefresh }) => {
@@ -17,7 +18,7 @@ const SellerDashboard = ({ onRefresh }) => {
             if (!user?.seller?.id) return;
 
             try {
-                const response = await fetch(`http://localhost:3000/seller/${user.seller.id}`);
+                const response = await fetch(`${API_URL}/seller/${user.seller.id}`);
                 if (!response.ok) throw new Error("Error al cargar publicaciones");
 
                 const data = await response.json();

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuth } from '../../../services/auth/AuthContext';
+import { API_URL } from "../../../config";
 
 const FormularioCompra = ({ onChange }) => {
     const [provincias, setProvincias] = useState([]);
@@ -30,7 +31,7 @@ const FormularioCompra = ({ onChange }) => {
     useEffect(() => {
         const fetchProvincias = async () => {
             try {
-                const res = await fetch('http://localhost:3000/provincias-ciudades');
+                const res = await fetch(`${API_URL}/provincias-ciudades`);
                 const data = await res.json();
                 setProvincias(data);
             } catch (error) {
@@ -44,7 +45,7 @@ const FormularioCompra = ({ onChange }) => {
         if (!form || !form.provinciaId) return;
         const fetchCiudades = async () => {
             try {
-                const res = await fetch(`http://localhost:3000/ciudades/${form.provinciaId}`);
+                const res = await fetch(`${API_URL}/ciudades/${form.provinciaId}`);
                 const data = await res.json();
                 setCiudades(data);
             } catch (error) {

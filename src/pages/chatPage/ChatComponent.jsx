@@ -4,8 +4,9 @@ import fondo3 from '../../assets/fondo3.png'
 import { useAuth } from '../../services/auth/AuthContext';
 import { useLocation, useNavigate } from 'react-router';
 import { io } from 'socket.io-client';
+import { API_URL } from '../../config';
 
-const socket = io("http://localhost:3000");
+const socket = io(`${API_URL}`);
 
 const ChatComponent = () => {
   const [activeChat, setActiveChat] = useState('');
@@ -58,7 +59,7 @@ const ChatComponent = () => {
   useEffect(() => {
     const initChat = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/chat/${user.id}`);
+        const res = await fetch(`${API_URL}/chat/${user.id}`);
         const chats = await res.json();
 
         setChatlist(chats);
@@ -71,7 +72,7 @@ const ChatComponent = () => {
         if (!existingChat && userID && sellerID) {
           const createdChat = await fetchCreateChat();
 
-          const updatedRes = await fetch(`http://localhost:3000/chat/${user.id}`);
+          const updatedRes = await fetch(`${API_URL}/chat/${user.id}`);
           const updatedChats = await updatedRes.json();
 
           setChatlist(updatedChats);
@@ -96,7 +97,7 @@ const ChatComponent = () => {
     const fetchMessages = async () => {
       if (!activeChat) return;
       try {
-        const res = await fetch(`http://localhost:3000/message/${activeChat}`);
+        const res = await fetch(`${API_URL}/message/${activeChat}`);
         const msgs = await res.json();
         setConversations(prev => ({ ...prev, [activeChat]: msgs }));
       } catch (err) {
@@ -117,7 +118,7 @@ const ChatComponent = () => {
     };
 
     try {
-      const res = await fetch('http://localhost:3000/messages', {
+      const res = await fetch(`${API_URL}/messages`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newMessage)
@@ -142,7 +143,7 @@ const ChatComponent = () => {
 
 
   const fetchCreateChat = async () => {
-    const res = await fetch('http://localhost:3000/chat', {
+    const res = await fetch(`${API_URL}/chat`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -209,7 +210,7 @@ const ChatComponent = () => {
                 >
                   <div className="flex-shrink-0 h-10 w-10 rounded-full bg-[#40250D] overflow-hidden">
                     {avatar ? (
-                      <img src={`http://localhost:3000${avatar}`} alt="avatar" className="w-full h-full object-cover" />
+                      <img src={`${API_URL}${avatar}`} alt="avatar" className="w-full h-full object-cover" />
                     ) : (
                       <div className="h-full w-full flex items-center justify-center text-white text-sm">
                         {otherUser?.BuyersName?.charAt(0) || '?'}
@@ -241,7 +242,7 @@ const ChatComponent = () => {
                   onClick={() => navigate(`/perfil/${otherUser.ID_Buyers}`)}>
                   {otherUser?.avatarUrl ? (
                     <img
-                      src={`http://localhost:3000${otherUser.avatarUrl}`}
+                      src={`${API_URL}{otherUser.avatarUrl}`}
                       alt="avatar"
                       className="w-full h-full object-cover"
                     />

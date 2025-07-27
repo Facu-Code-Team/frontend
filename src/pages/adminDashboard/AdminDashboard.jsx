@@ -3,6 +3,7 @@ import { useAuth } from "../../services/auth/AuthContext";
 import Register from "../../features/auth/register";
 import { motion } from 'framer-motion';
 import { notifyMissingFields, notifySuccessAdd } from "../notification/notification";
+import { API_URL } from "../../config";
 
 async function updatePublication(id, data) {
   const res = await fetch(`http://localhost:3000/publications/${id}`, {
@@ -40,7 +41,7 @@ const AdminDashboard = ({ onRefresh }) => {
 
   const fetchUsers = async () => {
     try {
-      const res = await fetch("http://localhost:3000/admin/usuarios", {
+      const res = await fetch(`${API_URL}/admin/usuarios`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -54,7 +55,7 @@ const AdminDashboard = ({ onRefresh }) => {
 
   const fetchPublications = async () => {
     try {
-      const res = await fetch("http://localhost:3000/admin/publicaciones", {
+      const res = await fetch(`${API_URL}:3000/admin/publicaciones`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -69,7 +70,7 @@ const AdminDashboard = ({ onRefresh }) => {
 
   const fetchSellers = async () => {
     try {
-      const res = await fetch("http://localhost:3000/admin/sellers", {
+      const res = await fetch(`${API_URL}/admin/sellers`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -83,7 +84,7 @@ const AdminDashboard = ({ onRefresh }) => {
 
   const deleteUser = async (id) => {
     try {
-      await fetch(`http://localhost:3000/admin/usuarios/${id}`, {
+      await fetch(`${API_URL}/admin/usuarios/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -107,7 +108,7 @@ const AdminDashboard = ({ onRefresh }) => {
 
   const deletePublication = async (id) => {
     try {
-      await fetch(`http://localhost:3000/admin/publicaciones/${id}`, {
+      await fetch(`${API_URL}/admin/publicaciones/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -133,7 +134,7 @@ const AdminDashboard = ({ onRefresh }) => {
 
   const deleteSellers = async (id) => {
     try {
-      await fetch(`http://localhost:3000/admin/seller/${id}`, {
+      await fetch(`${API_URL}/admin/seller/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

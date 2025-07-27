@@ -3,7 +3,7 @@ import SellerPolicyModal from "./DataBackPage";
 import { useNavigate } from "react-router";
 import { useAuth } from "../../services/auth/AuthContext";
 import { notifySuccessAdd, notifyMissingFields } from "../../pages/notification/notification";
-
+import {API_URL} from "../../config"
 const SellerRegister = () => {
   const [showModal, setShowModal] = useState(false);
 
@@ -13,7 +13,7 @@ const SellerRegister = () => {
 
   const handleConfirm = async () => {
     try {
-      const response = await fetch('http://localhost:3000/register-seller', {
+      const response = await fetch(`${API_URL}/register-seller`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

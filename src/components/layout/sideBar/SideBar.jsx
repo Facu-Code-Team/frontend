@@ -11,7 +11,7 @@ import {
   ArrowLeftOnRectangleIcon,
   DocumentTextIcon
 } from '@heroicons/react/24/solid';
-
+import {API_URL} from "../../../config"
 import { useAuth } from '../../../services/auth/AuthContext';
 import { useNavigate } from 'react-router';
 
@@ -70,7 +70,7 @@ const SideBar = ({ open, onClose }) => {
 
   const deleteUser = async (id) => {
     try {
-      await fetch(`http://localhost:3000/admin/usuarios/${id}`, {
+      await fetch(`${API_URL}/admin/usuarios/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from "react-router";
 import FormularioCompra from "./FormularioCompra";
 import { ArrowLeft } from "lucide-react";
 import { useState } from "react";
-
+import { API_URL } from "../../../config";
 const PurchaseDetails = () => {
   const [mensaje, setMensaje] = useState('');
   const [error, setError] = useState('');
@@ -21,7 +21,7 @@ const PurchaseDetails = () => {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:3000/api/purchase', {
+      const response = await fetch(`${API_URL}/api/purchase`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

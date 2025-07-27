@@ -7,7 +7,7 @@ import { Close } from '@mui/icons-material';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-
+import { API_URL } from "../../../config.js";
 import avatarDefault from '../../../assets/avatarDefault.jpeg';
 import { getSellerByPublicationId } from '../../../services/api';
 
@@ -116,7 +116,7 @@ const DetailPublication = () => {
           <Link to={`/Perfil/${seller.Buyer?.ID_Buyers}`}>
             <div className="flex items-center gap-3 mt-2">
               <img
-                src={seller.Buyer?.avatarUrl ? `http://localhost:3000${seller.Buyer?.avatarUrl}` : avatarDefault}
+                src={seller.Buyer?.avatarUrl ? `${API_URL}${seller.Buyer?.avatarUrl}` : avatarDefault}
                 alt='avatarSeller'
                 className="w-10 h-10 rounded-full bg-gray-300" />
               <div>

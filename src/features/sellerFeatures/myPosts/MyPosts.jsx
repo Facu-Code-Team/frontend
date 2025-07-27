@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { notifySuccessAdd } from '../../../pages/notification/notification';
 import { toast } from 'react-toastify';
-
+import { API_URL} from "../../../config"
 const MyPosts = ({ posts, setPosts, onRefresh }) => {
   const [editingPost, setEditingPost] = useState(null);
   const [formData, setFormData] = useState({});
@@ -51,7 +51,7 @@ const MyPosts = ({ posts, setPosts, onRefresh }) => {
         ID_Sellers
       };
 
-      const res = await fetch(`http://localhost:3000/publications/${id}`, {
+      const res = await fetch(`${API_URL}/publications/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -121,7 +121,7 @@ const MyPosts = ({ posts, setPosts, onRefresh }) => {
 
   const deletePublication = async (id) => {
     try {
-      const res = await fetch(`http://localhost:3000/publications/${id}`, {
+      const res = await fetch(`${API_URL}/publications/${id}`, {
         method: 'DELETE',
       });
 

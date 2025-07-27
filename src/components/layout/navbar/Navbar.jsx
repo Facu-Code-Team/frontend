@@ -7,7 +7,7 @@ import SideBar from "../sideBar/SideBar";
 import SellerPolicyModal from "../../../features/sellerFeatures/DataBackPage";
 import { useAuth } from "../../../services/auth/AuthContext";
 import { useSearch } from "../../../services/auth/SearchContext";
-
+import {API_URL} from "../../../config"
 export default function Navbar({ publications }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showPolicyModal, setShowPolicyModal] = useState(false);
@@ -65,7 +65,7 @@ export default function Navbar({ publications }) {
 
           <Link to="/Perfil">
             <img
-              src={user?.avatarUrl ? `http://localhost:3000${user?.avatarUrl}` : avatarDefault}
+              src={user?.avatarUrl ? `${API_URL}${user?.avatarUrl}` : avatarDefault}
               alt="Avatar"
               className="w-8 h-8 rounded-full object-cover"
             />
