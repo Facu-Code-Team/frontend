@@ -4,7 +4,7 @@ import MyPosts from '../../features/sellerFeatures/myPosts/MyPosts';
 import { useNavigate } from 'react-router'
 import { useEffect, useState } from 'react';
 import { useAuth } from '../../services/auth/AuthContext';
-import { API_URL } from "../../../../frontend/src/config";
+import { API_URL } from "../../config";
 
 
 const SellerDashboard = ({ onRefresh }) => {
