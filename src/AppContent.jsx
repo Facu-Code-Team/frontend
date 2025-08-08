@@ -25,7 +25,6 @@ import PublicationFormSeller from './features/sellerFeatures/PublicationFormSell
 import ProtectedSeller from './components/shared/routes/protected/ProtectedSeller';
 import SellerRegister from './features/sellerFeatures/SellerRegister';
 import ChatComponent from './pages/chatPage/ChatComponent'
-
 import { getPublications } from './services/api';
 import MyOrders from './components/shared/myOrders/MyOrders';
 import ProtectedAdminRoute from './components/shared/routes/protected/ProtectedAdminRoute';
