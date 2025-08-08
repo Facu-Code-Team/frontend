@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { FaEdit } from "react-icons/fa";
 import { ArrowLeft } from "lucide-react";
-
+import { API_URL } from "../../../config";
 import avatarDefault from '../../../assets/avatarDefault.jpeg';
 import { useAuth } from "../../../services/auth/AuthContext";
 import { useNavigate, useParams } from "react-router";
@@ -25,7 +25,7 @@ const Profile = () => {
         const fetchProfile = async () => {
             if (id) {
                 try {
-                    const res = await fetch(`http://localhost:3000/buyers/${id}`);
+                    const res = await fetch(`${API_URL}/buyers/${id}`);
                     const data = await res.json();
 
                     setSellerData({
@@ -43,7 +43,7 @@ const Profile = () => {
                         seller: data.Seller || null
                     });
                     if (data.Seller?.ID_Sellers) {
-                        const pubRes = await fetch(`http://localhost:3000/seller/${data.Seller.ID_Sellers}`);
+                        const pubRes = await fetch(`${API_URL}/seller/${data.Seller.ID_Sellers}`);
                         const pubData = await pubRes.json();
                         setPosts(pubData);
                     }
@@ -66,7 +66,7 @@ const Profile = () => {
 
                 if (user.seller?.id) {
                     try {
-                        const pubRes = await fetch(`http://localhost:3000/seller/${user.seller.id}`);
+                        const pubRes = await fetch(`${API_URL}/seller/${user.seller.id}`);
                         const pubData = await pubRes.json();
                         setPosts(pubData);
                     } catch (err) {
@@ -123,7 +123,7 @@ const Profile = () => {
             formData.append('Email', sellerData.email);
             formData.append('Phone', sellerData.phone);
 
-            const res = await fetch(`http://localhost:3000/buyers/${user.id}`, {
+            const res = await fetch(`${API_URL}/buyers/${user.id}`, {
                 method: "PUT",
                 body: formData
             });
@@ -194,7 +194,7 @@ const Profile = () => {
             return URL.createObjectURL(sellerData.profileImage);
 
         if (typeof sellerData.profileImage === "string")
-            return `http://localhost:3000${sellerData.profileImage}`;
+            return `${API_URL}${sellerData.profileImage}`;
 
         return avatarDefault;
     };
