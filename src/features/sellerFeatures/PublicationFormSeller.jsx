@@ -34,7 +34,7 @@ const PublicationFormSeller = ({ onRefresh }) => {
             try {
                 const [provinciasRes, categoriasRes] = await Promise.all([
                     fetch(`${API_URL}/provincias-ciudades`),
-                    fetch('http://localhost:3000/categorias')
+                    fetch(`${API_URL}/categorias`)
                 ]);
                 const provincias = await provinciasRes.json();
                 const categorias = await categoriasRes.json();
