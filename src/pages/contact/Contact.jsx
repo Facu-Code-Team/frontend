@@ -14,7 +14,7 @@ const initialState = {
 const Contact = () => {
     const [contact, setContact] = useState(initialState)
 
-    const handleChange = (e) => {
+    const handleChange = (e) => {   
         const { name, value } = e.target
         setContact(prev => ({ ...prev, [name]: value }))
     }
